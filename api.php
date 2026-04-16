@@ -1,4 +1,7 @@
 <?php
+// Sembunyikan pesan Warning/Notice bawaan PHP murni agar tidak merusak format JSON
+ini_set('display_errors', 0);
+error_reporting(0);
 header('Content-Type: application/json');
 
 // Memasukkan koneksi dari file config.php

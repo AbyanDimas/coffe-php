@@ -4,8 +4,14 @@ Berbeda dari proyek sebelah yang harus ditenagai mesin Node.js, aplikasi ini mur
 
 ## 🛠️ Persiapan
 
-1. **Web Server yang ter-install PHP**: (Bila menggunakan Debian, pastikan `apache2`, `php`, `php-mysql`, `php-pdo` sudah terinstall).
-2. **Koneksi Database**: Menggunakan database MariaDB/MySQL (Bisa _local_ di Linux atau di AWS RDS seperti yang tersetting secara _.default_).
+1. **Web Server Utama (Apache) dan Mesin PHP**: Bila Anda menggunakan sistem Debian/Ubuntu (seperti EC2 AWS), sistem biasanya belum bisa mengenali skrip PHP, yang membuat kode mentah berceceran di *browser*.
+   Jalankan tiga perintah ini di dalam server agar berjalan normal:
+   ```bash
+   sudo apt update
+   sudo apt install -y php libapache2-mod-php php-mysql
+   sudo systemctl restart apache2
+   ```
+2. **Koneksi Database**: Menggunakan database MariaDB/MySQL (Baik local maupun AWS RDS seperti yang tersetting secara bawaan).
 
 ---
 
