@@ -1,0 +1,227 @@
+/* DESIGN TOKENS */
+:root {
+    --bg-color: #f5eedc; /* Light coffee cream */
+    --text-color: #4a3b32; /* Dark coffee bean */
+    --text-light: #8c7365;
+    --card-bg: #fffbf5;
+    
+    --primary: #6f4e37; /* Coffee brown */
+    --primary-hover: #553a28;
+    --danger: #ef4444;
+    --danger-hover: #dc2626;
+    --warning: #d97706;
+    --warning-hover: #b45309;
+    --border: #e6d8cc;
+    
+    --radius: 12px;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.05);
+    --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+    
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* RESET & BASE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.5;
+    padding: 2rem 1rem;
+}
+
+h1, h2, h3, p {
+    margin-bottom: 1rem;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* LAYOUT */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #6f4e37, #a67b5b);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+header p {
+    color: var(--text-light);
+    font-size: 1.1rem;
+}
+
+/* COMPONENTS */
+.card {
+    background-color: var(--card-bg);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+    border: 1px solid var(--border);
+}
+
+/* FORMS */
+.input-group {
+    margin-bottom: 1.25rem;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.input-group input, 
+.input-group select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    background-color: #ffffff;
+    color: var(--text-color);
+    transition: var(--transition);
+    outline: none;
+}
+
+.input-group input:focus, 
+.input-group select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(111, 78, 55, 0.2);
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+/* BUTTONS */
+button {
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: white;
+    flex: 1;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.btn-secondary {
+    background-color: #e6d8cc;
+    color: var(--text-color);
+}
+
+.btn-secondary:hover {
+    background-color: #d1bfae;
+}
+
+.action-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+    border-radius: 6px;
+    margin-right: 0.5rem;
+}
+
+.btn-edit {
+    background-color: var(--warning);
+    color: white;
+}
+
+.btn-edit:hover {
+    background-color: var(--warning-hover);
+}
+
+.btn-delete {
+    background-color: var(--danger);
+    color: white;
+}
+
+.btn-delete:hover {
+    background-color: var(--danger-hover);
+}
+
+/* TABLE */
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+th, td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+th {
+    font-weight: 600;
+    color: var(--text-light);
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    background-color: #f1ebd9;
+    border-top: 1px solid var(--border);
+}
+
+tr {
+    transition: var(--transition);
+}
+
+tr:hover {
+    background-color: #f1ebd9;
+}
+
+.loading-state {
+    text-align: center;
+    color: var(--text-light);
+    padding: 2rem !important;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.badge-coffee { background-color: #e6d0ab; color: #5a3d2b; }
+.badge-non-coffee { background-color: #d1fae5; color: #065f46; }
+.badge-snack { background-color: #fee2e2; color: #991b1b; }
