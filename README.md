@@ -1,40 +1,52 @@
-# ☕ Coffee Shop CRUD - Versi PHP Asli
+# Coffee Shop CRUD - PHP Version
 
-Berbeda dari proyek sebelah yang harus ditenagai mesin Node.js, aplikasi ini murni dibangun menggunakan **PHP Murni (PDO API) dan Vanilla JavaScript**. Proyek ini bisa langsung dicemplungkan ke dalam _htdocs_ XAMPP atau folder root web server Apache/Nginx.
+Aplikasi ini merupakan sistem CRUD (Create, Read, Update, Delete) yang dibangun menggunakan arsitektur PHP murni (antarmuka PDO) di sisi backend dan Vanilla JavaScript termodularisasi menggunakan sinkronisasi API Fetch di sisi frontend. Sistem dirancang untuk berjalan secara independen pada web server yang mendukung eksekusi PHP (seperti Apache atau Nginx) melalui port 80.
 
-## 🛠️ Persiapan
+## Kebutuhan Sistem Terkait (Dependencies)
 
-1. **Web Server Utama (Apache) dan Mesin PHP**: Bila Anda menggunakan sistem Debian/Ubuntu (seperti EC2 AWS), sistem biasanya belum bisa mengenali skrip PHP, yang membuat kode mentah berceceran di *browser*.
-   Jalankan tiga perintah ini di dalam server agar berjalan normal:
+1. **Web Server dan Modul PHP**: Ekosistem utama mewajibkan aktivasi layanan ekstensi PHP untuk mencegah server mengekspos skrip sebagai raw text. Untuk spesifikasi Debian/Ubuntu (termasuk komputasi awan setara AWS EC2), instalasi dilakukan dengan hierarki berikut:
    ```bash
    sudo apt update
    sudo apt install -y php libapache2-mod-php php-mysql
    sudo systemctl restart apache2
    ```
-2. **Koneksi Database**: Menggunakan database MariaDB/MySQL (Baik local maupun AWS RDS seperti yang tersetting secara bawaan).
+2. **Koneksi Eksternal DBMS**: Instalasi yang disediakan ini secara terpandu mensyaratkan konektivitas MariaDB atau MySQL, baik secara host lokal (127.0.0.1) maupun komputasi awan.
 
 ---
 
-## 🚀 Langkah Menjalankan
+## Konfigurasi Arsitektural dan Peluncuran
 
-### 1. Letakkan Folder Proyek
-Pastikan folder `coffee-shop-php` ini diletakkan di dalam folder publik web server Anda. Jika Anda memakai Apache standar di Debian/Linux, lokasinya biasanya di:
+### 1. Penempatan Direktori Root
+Direktori `coffee-shop-php` wajib diletakkan berada di dalam public DocumentRoot pada konfigurasi vhost. Di lingkungan distribusi Linux standar, lokasi hierarkinya berada secara *default* di:
 ```bash
 /var/www/html/coffee-shop-php
 ```
 
-### 2. Atur Koneksi (File `config.php`)
-Buka file `config.php` untuk mengubah konfigurasi database bila ada perubahan Server MariaDB/MySQL:
+### 2. Modifikasi Parameter Struktural (`config.php`)
+Inti dari pengaturan keseluruhan visual aplikasi dan koneksi basis data bertumpu pada kontrol pusat file `config.php`. Terdapat berbagai deklarasi variabel dinamis yang menimpa kerangka desain.
+
+Konfigurasi Database RDS MySQL / MariaDB:
 ```php
 $host = 'database-1.c4ezxxzn5m2w.us-west-2.rds.amazonaws.com';
 $db   = 'coffee_shop_db';
 $user = 'admin';
-$pass = 'RahasiaAnda';
+$pass = 'RahasiaSuper';
 ```
 
-### 3. Tes Aplikasi (Akses URL)
-Buka browser dan arahkan alamat ke lokasi server Anda beserta nama foldernya.
-Bila jalan di lokal tanpa virtual host:
+Konfigurasi Tekstual Antarmuka Web:
+- `$appName`: Modifikasi string utama header aplikasi.
+- `$appDesc`: Modifikasi label sub-header aplikasi.
+- `$labelForm`: Mengelola konvensi sintaks judul formulir POST input.
+
+Integrasi Template Antarmuka Dinamis:
+- `$themeMode`: Mengatur referensi selektor token CSS dari nilai 1 hingga 20. Terdapat 20 integrasi palet warna visual ranging dari desain Glassmorphism, Brutalism, Apple Minimalist, hingga gaya Cyberpunk tersemat pada `style.css`.
+- `$layoutMode`: Mendefinisikan aturan pemecahan tata letak blok CSS Flex/Grid. Input variabel mencakup resolusi model:
+   - `1`: Stacked vertical top-down flow (Mode default/klasik).
+   - `2`: Split-pane dashboard lateral panel spacing (Memecah layar).
+   - `3`: Compact structural grid element flow (Terpusat).
+
+### 3. Eksekusi Akses Rute HTTP
+Pada tahap stabilisasi akhir, aplikasi dapat dijangkau dan diproses tanpa sintaks daemon interpreter tersendiri (berbeda dengan node server), dan dijalankan secara asinkron dari browser ke route root web server:
 **http://localhost/coffee-shop-php**
 
-Aplikasi CRUD sudah siap menampilkan menu secara serentak karena terhubung dengan MariaDB/MySQL di belakang layar, dan semuanya diproses di atas **Port 80 standar**!
+Mekanisme REST API internal akan mengeksekusi routing `api.php?id=` melalui Fetch API untuk menolak *refreshing DOM tree* saat melakukan submit formulir.

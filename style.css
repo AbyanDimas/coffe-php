@@ -1,11 +1,16 @@
-/* DESIGN TOKENS */
+/* =======================================================
+   REVOLUSI 20 TEMA & 3 LAYOUT ENGINE
+   BY ANTIGRAVITY
+   ======================================================= */
+
+/* DEFAULT VARIABLES (Akan ditimpa oleh kelas .theme-X) */
 :root {
-    --bg-color: #f5eedc; /* Light coffee cream */
-    --text-color: #4a3b32; /* Dark coffee bean */
+    --bg-color: #f5eedc; 
+    --text-color: #4a3b32; 
     --text-light: #8c7365;
     --card-bg: #fffbf5;
     
-    --primary: #6f4e37; /* Coffee brown */
+    --primary: #6f4e37; 
     --primary-hover: #553a28;
     --danger: #ef4444;
     --danger-hover: #dc2626;
@@ -14,13 +19,398 @@
     --border: #e6d8cc;
     
     --radius: 12px;
-    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.05);
-    --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+    --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.05);
     
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --font-heading: system-ui, sans-serif;
+    --font-body: system-ui, sans-serif;
+    
+    --title-gradient-1: #6f4e37;
+    --title-gradient-2: #a67b5b;
+    
+    --input-bg: #ffffff;
+    --input-color: #333333;
+    
+    --th-bg: #f1ebd9;
+    --tr-hover: #f1ebd9;
+    --card-border: 1px solid var(--border);
+    --backdrop-filter: none;
 }
 
-/* RESET & BASE */
+/* =======================================================
+   TEMA 1-20 (CSS VARIABLES OVERRIDES)
+   ======================================================= */
+
+/* 1. Coffee Classic (Original) */
+.theme-1 { /* Memakai variabel default :root */ }
+
+/* 2. Ocean Glassmorphism */
+.theme-2 {
+    --bg-color: linear-gradient(135deg, #1e3a8a, #3b82f6, #93c5fd);
+    --text-color: #ffffff;
+    --text-light: #e0e7ff;
+    --card-bg: rgba(255, 255, 255, 0.1);
+    --backdrop-filter: blur(12px);
+    --card-border: 1px solid rgba(255, 255, 255, 0.3);
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --danger: #f43f5e;
+    --danger-hover: #e11d48;
+    --warning: #f59e0b;
+    --title-gradient-1: #ffffff;
+    --title-gradient-2: #bfdbfe;
+    --input-bg: rgba(255,255,255,0.2);
+    --input-color: #ffffff;
+    --border: rgba(255,255,255,0.2);
+    --th-bg: rgba(255,255,255,0.1);
+    --tr-hover: rgba(255,255,255,0.15);
+    --shadow: 0 8px 32px 0 rgba(0,0,0,0.2);
+}
+
+/* 3. Hacker Dark Mode */
+.theme-3 {
+    --bg-color: #0d1117;
+    --text-color: #39ff14;
+    --text-light: #228b22;
+    --card-bg: #161b22;
+    --primary: #39ff14;
+    --primary-hover: #32cd32;
+    --danger: #ff003c;
+    --warning: #ffd700;
+    --border: #30363d;
+    --radius: 0px;
+    --font-heading: 'Space Mono', monospace;
+    --font-body: 'Space Mono', monospace;
+    --title-gradient-1: #39ff14;
+    --title-gradient-2: #228b22;
+    --input-bg: #0d1117;
+    --input-color: #39ff14;
+    --th-bg: #21262d;
+    --tr-hover: #1f2428;
+    --card-border: 1px solid #39ff14;
+}
+
+/* 4. Matcha Green */
+.theme-4 {
+    --bg-color: #f3f4f0;
+    --text-color: #2f3e2e;
+    --text-light: #526b51;
+    --card-bg: #ffffff;
+    --primary: #8fa07e;
+    --primary-hover: #7b8c6a;
+    --danger: #cf7171;
+    --warning: #d4a373;
+    --border: #e2e5df;
+    --title-gradient-1: #526b51;
+    --title-gradient-2: #8fa07e;
+    --th-bg: #eef0eb;
+    --tr-hover: #eef0eb;
+}
+
+/* 5. Apple Minimalist */
+.theme-5 {
+    --bg-color: #fbfbfd;
+    --text-color: #1d1d1f;
+    --text-light: #86868b;
+    --card-bg: #ffffff;
+    --primary: #0071e3;
+    --primary-hover: #0077ed;
+    --border: #d2d2d7;
+    --radius: 18px;
+    --shadow: 0 4px 20px rgba(0,0,0,0.04);
+    --title-gradient-1: #1d1d1f;
+    --title-gradient-2: #424245;
+    --th-bg: #f5f5f7;
+    --tr-hover: #f5f5f7;
+    --card-border: none;
+}
+
+/* 6. Cyberpunk 2077 */
+.theme-6 {
+    --bg-color: #111111;
+    --text-color: #00ffff;
+    --text-light: #fce205;
+    --card-bg: #222222;
+    --primary: #ff003c;
+    --primary-hover: #d10031;
+    --danger: #fce205;
+    --warning: #00ffff;
+    --border: #ff003c;
+    --radius: 0px;
+    --title-gradient-1: #00ffff;
+    --title-gradient-2: #ff003c;
+    --input-bg: #111111;
+    --input-color: #fce205;
+    --th-bg: #ff003c;
+    --tr-hover: #333333;
+    --card-border: 2px solid #00ffff;
+    --shadow: 4px 4px 0 #ff003c;
+}
+
+/* 7. Sunset Glow */
+.theme-7 {
+    --bg-color: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+    --text-color: #3e2723;
+    --text-light: #5d4037;
+    --card-bg: rgba(255,255,255,0.7);
+    --backdrop-filter: blur(5px);
+    --primary: #ff5e62;
+    --primary-hover: #e0454b;
+    --title-gradient-1: #ff0844;
+    --title-gradient-2: #ffb199;
+    --th-bg: rgba(255,255,255,0.5);
+    --tr-hover: rgba(255,255,255,0.6);
+}
+
+/* 8. Royal Deep Purple */
+.theme-8 {
+    --bg-color: #1e1b4b;
+    --text-color: #e0e7ff;
+    --text-light: #c7d2fe;
+    --card-bg: #312e81;
+    --primary: #fbbf24;
+    --primary-hover: #f59e0b;
+    --danger: #ef4444;
+    --border: #4338ca;
+    --title-gradient-1: #fbbf24;
+    --title-gradient-2: #fef3c7;
+    --input-bg: #3730a3;
+    --input-color: #ffffff;
+    --th-bg: #4338ca;
+    --tr-hover: #3730a3;
+    --card-border: 1px solid #fbbf24;
+}
+
+/* 9. Pastel KPop */
+.theme-9 {
+    --bg-color: #fdf2f8;
+    --text-color: #831843;
+    --text-light: #be185d;
+    --card-bg: #ffffff;
+    --primary: #f472b6;
+    --primary-hover: #ec4899;
+    --border: #fbcfe8;
+    --radius: 24px;
+    --shadow: 0 10px 25px -5px rgba(244,114,182, 0.3);
+    --title-gradient-1: #f472b6;
+    --title-gradient-2: #38bdf8;
+    --th-bg: #fce7f3;
+    --tr-hover: #fdf2f8;
+}
+
+/* 10. Red Velvet */
+.theme-10 {
+    --bg-color: #270609;
+    --text-color: #fed7aa;
+    --text-light: #fdba74;
+    --card-bg: #450a0f;
+    --primary: #991b1b;
+    --primary-hover: #7f1d1d;
+    --border: #7f1d1d;
+    --title-gradient-1: #f87171;
+    --title-gradient-2: #ef4444;
+    --input-bg: #270609;
+    --input-color: #fed7aa;
+    --th-bg: #7f1d1d;
+    --tr-hover: #450a0f;
+    --card-border: 1px solid #b91c1c;
+}
+
+/* 11. Spotify Mode */
+.theme-11 {
+    --bg-color: #121212;
+    --text-color: #ffffff;
+    --text-light: #b3b3b3;
+    --card-bg: #181818;
+    --primary: #1db954;
+    --primary-hover: #1ed760;
+    --border: #282828;
+    --radius: 8px;
+    --title-gradient-1: #1db954;
+    --title-gradient-2: #ffffff;
+    --input-bg: #282828;
+    --input-color: #ffffff;
+    --th-bg: #282828;
+    --tr-hover: #282828;
+    --card-border: none;
+}
+
+/* 12. Muji Japanese */
+.theme-12 {
+    --bg-color: #faf9f6;
+    --text-color: #4b4b4b;
+    --text-light: #8e8e8e;
+    --card-bg: #ffffff;
+    --primary: #a89f91;
+    --primary-hover: #91887a;
+    --border: #e6e4e1;
+    --radius: 0px;
+    --shadow: none;
+    --title-gradient-1: #4b4b4b;
+    --title-gradient-2: #8e8e8e;
+    --th-bg: #f0eee9;
+    --tr-hover: #faf9f6;
+    --card-border: 1px solid #e6e4e1;
+}
+
+/* 13. Retro 90s Arcade */
+.theme-13 {
+    --bg-color: #211c47;
+    --text-color: #ffffff;
+    --text-light: #2bc1f4;
+    --card-bg: #322d64;
+    --primary: #f21b7f;
+    --primary-hover: #d1166d;
+    --border: #2bc1f4;
+    --font-heading: 'Press Start 2P', monospace;
+    --radius: 0px;
+    --shadow: inset -4px -4px 0px rgba(0,0,0,0.5);
+    --title-gradient-1: #fce205;
+    --title-gradient-2: #f21b7f;
+    --input-bg: #211c47;
+    --input-color: #ffffff;
+    --th-bg: #f21b7f;
+    --tr-hover: #48418a;
+    --card-border: 4px solid #2bc1f4;
+}
+
+/* 14. Barbie Bloom */
+.theme-14 {
+    --bg-color: #ffb6c1;
+    --text-color: #ff1493;
+    --text-light: #db7093;
+    --card-bg: #fff0f5;
+    --primary: #ff69b4;
+    --primary-hover: #ff1493;
+    --border: #ffb6c1;
+    --radius: 30px;
+    --shadow: 0 10px 20px rgba(255,105,180, 0.4);
+    --title-gradient-1: #ff1493;
+    --title-gradient-2: #ff69b4;
+    --th-bg: #ffe4e1;
+    --tr-hover: #fff0f5;
+    --card-border: 3px solid #ff69b4;
+}
+
+/* 15. Solar Flare Yellow */
+.theme-15 {
+    --bg-color: #ffd600;
+    --text-color: #111111;
+    --text-light: #333333;
+    --card-bg: #ffffff;
+    --primary: #000000;
+    --primary-hover: #333333;
+    --border: #000000;
+    --radius: 0px;
+    --shadow: 8px 8px 0px #000000;
+    --title-gradient-1: #000000;
+    --title-gradient-2: #333333;
+    --th-bg: #000000;
+    --tr-hover: #f0f0f0;
+    --card-border: 4px solid #000000;
+}
+.theme-15 th { color: #ffd600; }
+
+/* 16. Discord Aesthetic */
+.theme-16 {
+    --bg-color: #313338;
+    --text-color: #dbdee1;
+    --text-light: #949ba4;
+    --card-bg: #2b2d31;
+    --primary: #5865F2;
+    --primary-hover: #4752C4;
+    --danger: #da373c;
+    --border: #1e1f22;
+    --radius: 6px;
+    --title-gradient-1: #ffffff;
+    --title-gradient-2: #dbdee1;
+    --input-bg: #1e1f22;
+    --input-color: #dbdee1;
+    --th-bg: #1e1f22;
+    --tr-hover: #2f3136;
+    --card-border: none;
+}
+
+/* 17. Brutalism UI */
+.theme-17 {
+    --bg-color: #ffebb5;
+    --text-color: #000000;
+    --text-light: #000000;
+    --card-bg: #ffffff;
+    --primary: #38bdf8;
+    --primary-hover: #0284c7;
+    --danger: #f87171;
+    --border: #000000;
+    --radius: 0px;
+    --shadow: 4px 4px 0px #000000;
+    --title-gradient-1: #000000;
+    --title-gradient-2: #000000;
+    --th-bg: #22d3ee;
+    --tr-hover: #fcd34d;
+    --card-border: 3px solid #000000;
+}
+.theme-17 input, .theme-17 select, .theme-17 button { border: 3px solid #000000; box-shadow: 3px 3px 0 #000000; }
+.theme-17 input:focus, .theme-17 select:focus { box-shadow: 1px 1px 0 #000000; transform: translate(2px, 2px); }
+
+/* 18. Autumn Leaves */
+.theme-18 {
+    --bg-color: #fcece0;
+    --text-color: #5c2c16;
+    --text-light: #8a482b;
+    --card-bg: #ffffff;
+    --primary: #d9534f;
+    --primary-hover: #b53d39;
+    --danger: #8b0000;
+    --border: #e9c8b3;
+    --radius: 15px;
+    --title-gradient-1: #d9534f;
+    --title-gradient-2: #e67e22;
+    --th-bg: #f7dabb;
+    --tr-hover: #fdf3eb;
+}
+
+/* 19. Matrix Console */
+.theme-19 {
+    --bg-color: #000000;
+    --text-color: #00ff41;
+    --text-light: #008f11;
+    --card-bg: #000000;
+    --primary: #00ff41;
+    --primary-hover: #008f11;
+    --border: #00ff41;
+    --radius: 0px;
+    --font-heading: 'Courier New', monospace;
+    --font-body: 'Courier New', monospace;
+    --title-gradient-1: #00ff41;
+    --title-gradient-2: #008f11;
+    --input-bg: #000000;
+    --input-color: #00ff41;
+    --th-bg: #003b00;
+    --tr-hover: #001a00;
+    --card-border: 1px dotted #00ff41;
+}
+
+/* 20. High-End Monotone */
+.theme-20 {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --text-light: #777777;
+    --card-bg: #ffffff;
+    --primary: #000000;
+    --primary-hover: #333333;
+    --danger: #000000;
+    --border: #eeeeee;
+    --radius: 0px;
+    --title-gradient-1: #000000;
+    --title-gradient-2: #999999;
+    --th-bg: #fafafa;
+    --tr-hover: #fafafa;
+    --card-border: 1px solid #000;
+}
+
+
+/* =======================================================
+   RESETS & TATA LETAK UMUM
+   ======================================================= */
 * {
     margin: 0;
     padding: 0;
@@ -28,26 +418,21 @@
 }
 
 body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    background-color: var(--bg-color);
+    font-family: var(--font-body);
+    background: var(--bg-color);
     color: var(--text-color);
     line-height: 1.5;
     padding: 2rem 1rem;
+    min-height: 100vh;
+    transition: background 0.3s ease;
 }
 
-h1, h2, h3, p {
-    margin-bottom: 1rem;
-}
-
-.hidden {
-    display: none !important;
-}
-
-/* LAYOUT */
-.container {
-    max-width: 900px;
+.layout-wrapper {
+    max-width: 900px; /* Default disesuaikan Layout nanti */
     margin: 0 auto;
 }
+
+.hidden { display: none !important; }
 
 header {
     text-align: center;
@@ -55,12 +440,14 @@ header {
 }
 
 header h1 {
+    font-family: var(--font-heading);
     font-size: 2.5rem;
     font-weight: 700;
-    background: linear-gradient(135deg, #6f4e37, #a67b5b);
+    background: linear-gradient(135deg, var(--title-gradient-1), var(--title-gradient-2));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
 }
 
 header p {
@@ -68,26 +455,32 @@ header p {
     font-size: 1.1rem;
 }
 
-/* COMPONENTS */
 .card {
     background-color: var(--card-bg);
     border-radius: var(--radius);
     padding: 1.5rem;
     box-shadow: var(--shadow);
     margin-bottom: 2rem;
-    border: 1px solid var(--border);
+    border: var(--card-border);
+    backdrop-filter: var(--backdrop-filter);
 }
 
-/* FORMS */
-.input-group {
-    margin-bottom: 1.25rem;
+.section-title {
+    font-family: var(--font-heading);
+    margin-bottom: 1.5rem;
+    color: var(--title-gradient-1);
 }
+
+/* =======================================================
+   FORMULIR
+   ======================================================= */
+.input-group { margin-bottom: 1.25rem; }
 
 .input-group label {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 500;
-    font-size: 0.95rem;
+    color: var(--text-color);
 }
 
 .input-group input, 
@@ -95,19 +488,18 @@ header p {
     width: 100%;
     padding: 0.75rem 1rem;
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: calc(var(--radius) * 0.7);
     font-family: inherit;
     font-size: 1rem;
-    background-color: #ffffff;
-    color: var(--text-color);
-    transition: var(--transition);
+    background-color: var(--input-bg);
+    color: var(--input-color);
+    transition: all 0.3s ease;
     outline: none;
 }
 
 .input-group input:focus, 
 .input-group select:focus {
     border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(111, 78, 55, 0.2);
 }
 
 .form-actions {
@@ -116,16 +508,19 @@ header p {
     margin-top: 1.5rem;
 }
 
-/* BUTTONS */
+
+/* =======================================================
+   BUTTONS
+   ======================================================= */
 button {
     font-family: inherit;
     font-size: 1rem;
     font-weight: 600;
     padding: 0.75rem 1.5rem;
     border: none;
-    border-radius: 8px;
+    border-radius: calc(var(--radius) * 0.7);
     cursor: pointer;
-    transition: var(--transition);
+    transition: all 0.2s ease;
 }
 
 .btn-primary {
@@ -136,48 +531,35 @@ button {
 
 .btn-primary:hover {
     background-color: var(--primary-hover);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-hover);
 }
 
 .btn-secondary {
-    background-color: #e6d8cc;
+    background-color: var(--th-bg);
     color: var(--text-color);
-}
-
-.btn-secondary:hover {
-    background-color: #d1bfae;
 }
 
 .action-btn {
     padding: 0.4rem 0.8rem;
     font-size: 0.85rem;
-    border-radius: 6px;
+    border-radius: calc(var(--radius) * 0.5);
     margin-right: 0.5rem;
 }
 
-.btn-edit {
-    background-color: var(--warning);
-    color: white;
-}
+.btn-edit { background-color: var(--warning); color: #fff; }
+.btn-edit:hover { background-color: var(--warning-hover); }
 
-.btn-edit:hover {
-    background-color: var(--warning-hover);
-}
+.btn-delete { background-color: var(--danger); color: #fff; }
+.btn-delete:hover { background-color: var(--danger-hover); }
 
-.btn-delete {
-    background-color: var(--danger);
-    color: white;
-}
+/* Khusus Discord dan Brutalism text-color tombol */
+.theme-16 .btn-primary { color: #fff; }
+.theme-17 .btn-primary { color: #fff; }
 
-.btn-delete:hover {
-    background-color: var(--danger-hover);
-}
 
-/* TABLE */
-.table-container {
-    overflow-x: auto;
-}
+/* =======================================================
+   TABEL GRID
+   ======================================================= */
+.table-container { overflow-x: auto; }
 
 table {
     width: 100%;
@@ -191,22 +573,17 @@ th, td {
 }
 
 th {
+    font-family: var(--font-heading);
     font-weight: 600;
     color: var(--text-light);
     text-transform: uppercase;
     font-size: 0.85rem;
-    letter-spacing: 0.05em;
-    background-color: #f1ebd9;
+    background-color: var(--th-bg);
     border-top: 1px solid var(--border);
 }
 
-tr {
-    transition: var(--transition);
-}
-
-tr:hover {
-    background-color: #f1ebd9;
-}
+tr { transition: background 0.3s; }
+tr:hover { background-color: var(--tr-hover); }
 
 .loading-state {
     text-align: center;
@@ -220,8 +597,78 @@ tr:hover {
     border-radius: 999px;
     font-size: 0.85rem;
     font-weight: 500;
+    background-color: var(--border);
+    color: var(--text-color);
 }
 
-.badge-coffee { background-color: #e6d0ab; color: #5a3d2b; }
-.badge-non-coffee { background-color: #d1fae5; color: #065f46; }
-.badge-snack { background-color: #fee2e2; color: #991b1b; }
+
+/* =======================================================
+   3 LAYOUT MODES / FORMATION
+   ======================================================= */
+
+.main-content {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+/* 1. Atas-Bawah (Klasik) */
+.layout-1 .main-content {
+    flex-direction: column;
+}
+.layout-1 .form-section, 
+.layout-1 .table-section {
+    width: 100%;
+}
+
+/* 2. Split Kiri-Kanan */
+.layout-2 .layout-wrapper {
+    max-width: 1200px;
+}
+.layout-2 .main-content {
+    flex-direction: row;
+}
+.layout-2 .form-section {
+    flex: 1;
+    position: sticky;
+    top: 2rem;
+}
+.layout-2 .table-section {
+    flex: 2;
+}
+@media (max-width: 768px) {
+    .layout-2 .main-content { flex-direction: column; }
+    .layout-2 .form-section { position: relative; }
+}
+
+/* 3. Compact Grid / Ringkas */
+.layout-3 .layout-wrapper {
+    max-width: 900px;
+}
+.layout-3 .main-content {
+    flex-direction: column;
+}
+.layout-3 .form-section {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+.layout-3 .form-section #menu-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+}
+.layout-3 .input-group {
+    flex: 1;
+    min-width: 150px;
+    margin-bottom: 0;
+}
+.layout-3 .form-actions {
+    margin-top: 0;
+    flex: 1;
+    min-width: 150px;
+}
+@media (max-width: 768px) {
+    .layout-3 .form-section #menu-form { flex-direction: column; }
+    .layout-3 .input-group, .layout-3 .form-actions { width: 100%; }
+}
