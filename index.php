@@ -27,7 +27,7 @@ require_once 'config.php';
                     
                     <div class="input-group">
                         <label for="name">Nama Menu</label>
-                        <input type="text" id="name" placeholder="Cth: Caffe Latte" required>
+                        <input type="text" id="name" placeholder="Required" required>
                     </div>
 
                     <div class="input-group">
